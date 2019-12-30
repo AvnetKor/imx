@@ -18,3 +18,4 @@ U-Boot, U-Boot DTB, Arm Trusted firmware,  TEE OS(선택적)은 FIT이미지로 
 
 <Linux 커널이미지와 디바이스 트리> 
 
+ㅁㄹㅇㅁㄹㅇㄴㅁ
