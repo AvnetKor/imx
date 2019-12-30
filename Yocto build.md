@@ -4,11 +4,12 @@ i.MX 8M Quad Evaluation Kit Quick Start Guide (IMX8MQUADEVKQSG)- https://www.nxp
 
 1. Host Setup
 
-120GB ÀÌ»ó ÇÏµåµğ½ºÅ©
-Ubuntu 16.04 ÀÌ»ó
-SDL ¼³Ä¡ ¿¡¼­ ¹®Á¦°¡ ¹ß»ı½Ã local.conf ÆÄÀÏ¿¡ ¾Æ·¡ ºÎºĞ Ãß°¡°¥ °Í 
+120GB ì´ìƒ í•˜ë“œë””ìŠ¤í¬
+Ubuntu 16.04 ì´ìƒ
+SDL ì„¤ì¹˜ ì—ì„œ ë¬¸ì œê°€ ë°œìƒì‹œ local.conf íŒŒì¼ì— ì•„ë˜ ë¶€ë¶„ ì¶”ê°€ê°ˆ ê²ƒ 
 #PACKAGECONFIG_append_pn-qemu-native = " sdl"
 #PACKAGECONFIG_append_pn-nativesdk-qemu = " sdl"
+
 1-1.	Host Setup
 $ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat libsdl1.2-dev
 
@@ -18,48 +19,48 @@ $sudo apt-get install libsdl1.2-dev xterm sed cvs subversion coreutils texi2html
 
 $sudo apt-get install u-boot-tools
 
-1-2.	repo utility ¼³Ä¡
+1-2.	repo utility ì„¤ì¹˜
 
-Repo´Â ¿©·¯ ÀúÀå¼Ò°¡ Æ÷ÇÔ µÈ ÇÁ·ÎÁ§Æ®¸¦º¸´Ù ½±°Ô °ü¸® ÇÒ ¼öÀÖ´Â Git ±â¹İ µµ±¸ÀÔ´Ï´Ù.
-µ¿ÀÏÇÑ ¼­¹ö¿¡ ÀÖÀ» ÇÊ¿ä´Â ¾ø½À´Ï´Ù.
-Repo´Â Yocto ÇÁ·ÎÁ§Æ®ÀÇ °èÃşÈ­ µÈ Æ¯¼ºÀ» ¸Å¿ì Àß º¸¿ÏÇÏ¹Ç·Î »ç¿ëÀÚ°¡ ÀÚ½ÅÀÇ °èÃşÀ» BSP¿¡ ½±°Ô Ãß°¡ ÇÒ ¼ö ÀÖ½À´Ï´Ù.
+RepoëŠ” ì—¬ëŸ¬ ì €ì¥ì†Œê°€ í¬í•¨ ëœ í”„ë¡œì íŠ¸ë¥¼ë³´ë‹¤ ì‰½ê²Œ ê´€ë¦¬ í•  ìˆ˜ìˆëŠ” Git ê¸°ë°˜ ë„êµ¬ì…ë‹ˆë‹¤.
+ë™ì¼í•œ ì„œë²„ì— ìˆì„ í•„ìš”ëŠ” ì—†ìŠµë‹ˆë‹¤.
+RepoëŠ” Yocto í”„ë¡œì íŠ¸ì˜ ê³„ì¸µí™” ëœ íŠ¹ì„±ì„ ë§¤ìš° ì˜ ë³´ì™„í•˜ë¯€ë¡œ ì‚¬ìš©ìê°€ ìì‹ ì˜ ê³„ì¸µì„ BSPì— ì‰½ê²Œ ì¶”ê°€ í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.
 
 $mkdir ~/bin
 $curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 $chmod a+x ~/bin/repo
 
-.bashrc¿¡ ~/bin¸¦ Ãß°¡ÇÏ¶ó 
+.bashrcì— ~/binë¥¼ ì¶”ê°€í•˜ë¼ 
 $vi ~/.bashrc  
 export PATH=~/bin:$PATH
 
 
 
 
-2. YOCTO ÇÁ·ÎÁ§Æ® ¼³Ä¡
+2. YOCTO í”„ë¡œì íŠ¸ ì„¤ì¹˜
 
-GIT ¼³Á¤
+GIT ì„¤ì •
 $git config --global user.name "Your Name"
 $git config --global user.email "Your Email"
 $git config ?list
 
-i.MX Yocto Project Community BSP recipe layers ´Ù¿î·ÎµåÇÏ±â 
+i.MX Yocto Project Community BSP recipe layers ë‹¤ìš´ë¡œë“œí•˜ê¸° 
 
 $mkdir imx-yocto-bsp
 $cd imx-yocto-bsp
 $repo init -u https://source.codeaurora.org/external/imx/imx-manifest -b imx-linux-sumo -mimx-4.14.98-2.0.0_ga.xml
 $repo sync
 
-¾Æ·¡ ¸µÅ©¿¡¼­ ÀÌ ¸±¸®Áî¿¡¼­ Áö¿øµÇ´Â ¸ğµç ¸Ş´ÏÆä½ºÆ®¸¦ È®ÀÎ
+ì•„ë˜ ë§í¬ì—ì„œ ì´ ë¦´ë¦¬ì¦ˆì—ì„œ ì§€ì›ë˜ëŠ” ëª¨ë“  ë©”ë‹ˆí˜ìŠ¤íŠ¸ë¥¼ í™•ì¸
 
 https://source.codeaurora.org/external/imx/imx-manifest/tree/?h=imx-linux-sumo
 
-repo sync¸¦ ÅëÇØ ÃÖ½Å ÄÚµå¸¦ ¾÷µ¥ÀÌÆ® ÇÒ ¼ö ÀÖ´Ù. ¹®Á¦°¡ ¹ß»ıÇÏ¸é .repo¸¦ Á¦°ÅÇÏ°í ´Ù½Ã repo ÃÊ±âÈ­¸¦ ÁøÇà 
+repo syncë¥¼ í†µí•´ ìµœì‹  ì½”ë“œë¥¼ ì—…ë°ì´íŠ¸ í•  ìˆ˜ ìˆë‹¤. ë¬¸ì œê°€ ë°œìƒí•˜ë©´ .repoë¥¼ ì œê±°í•˜ê³  ë‹¤ì‹œ repo ì´ˆê¸°í™”ë¥¼ ì§„í–‰ 
 
-3. ÀÌ¹ÌÁö ºôµå
+3. ì´ë¯¸ì§€ ë¹Œë“œ
 
-fsl-setup-release.sh ½ºÅ©¸³Æ®¸¦ ÅëÇØ ÁøÇàµÊ
+fsl-setup-release.sh ìŠ¤í¬ë¦½íŠ¸ë¥¼ í†µí•´ ì§„í–‰ë¨
 
-meta-freescale/conf/machine ¿¡ Áö¿øµÇ´Â ¸Ó½Å(º¸µå)¸®½ºÆ®¸¦ È®ÀÎÇÒ ¼ö ÀÖ´Ù. 
+meta-freescale/conf/machine ì— ì§€ì›ë˜ëŠ” ë¨¸ì‹ (ë³´ë“œ)ë¦¬ìŠ¤íŠ¸ë¥¼ í™•ì¸í•  ìˆ˜ ìˆë‹¤. 
 
 ? imx6qpsabreauto
 ? imx6qpsabresd
@@ -85,7 +86,7 @@ meta-freescale/conf/machine ¿¡ Áö¿øµÇ´Â ¸Ó½Å(º¸µå)¸®½ºÆ®¸¦ È®ÀÎÇÒ ¼ö ÀÖ´Ù.
 ? imx8mmevk
 
 $ DISTRO= fsl-imx-wayland  MACHINE=imx8qmmek source fsl-setup-release.sh -b build-wayland
-Distro´Â °¢ ±×·¡ÇÈ ¹é¿£µå ÇÁ·¹ÀÓ¿öÅ©À¸·Î Frame Buffer, Wayland, XWayland, and X11 µîÀÌ ÀÖ´Ù. 
+DistroëŠ” ê° ê·¸ë˜í”½ ë°±ì—”ë“œ í”„ë ˆì„ì›Œí¬ìœ¼ë¡œ Frame Buffer, Wayland, XWayland, and X11 ë“±ì´ ìˆë‹¤. 
 
 
 <distro> 
@@ -94,14 +95,14 @@ Distro´Â °¢ ±×·¡ÇÈ ¹é¿£µå ÇÁ·¹ÀÓ¿öÅ©À¸·Î Frame Buffer, Wayland, XWayland, and X1
 ? fsl-imx-xwayland - Wayland graphics and X11. X11 applications using EGL are not supported.
 ? fsl-imx-fb - Frame Buffer graphics - no X11 or Wayland. Frame Buffer is not supported on i.MX 8.
 
-MACHINEÀº À§¿¡¼­ meta-freescale or meta-fsl-bsp-release/conf/machine ¿¡ ¸®½ºÆ®¾÷µÈ º¸µåÀÌ´Ù. 
+MACHINEì€ ìœ„ì—ì„œ meta-freescale or meta-fsl-bsp-release/conf/machine ì— ë¦¬ìŠ¤íŠ¸ì—…ëœ ë³´ë“œì´ë‹¤. 
 
--b build-wayland Àº ºôµåµğ·ºÅä¸® ÀÌ¸§ÀÌ´Ù.
-ºôµå µğ·ºÅä¸®¾È¿¡ conf Æú´õ¾È¿¡ bblayers.conf ¿Í local.conf ÆÄÀÏÀÌ ÀÖ´Âµ¥ 
-/conf/bblayers.conf ´Â ¸ŞÅ¸·¹ÀÌ¾îµéÀÌ Æ÷ÇÔµÈ´Ù. 
-/conf/local.conf´Â machine, distro ¼³Á¤ÀÌ Æ÷ÇÔµÈ´Ù. ACCEPT_FSL_EULAµµ Æ÷ÇÔµÇ´Âµ¥´Â ÀÌ´Â EULA¸¦ ¼ö¿ëÇÔÀ» ÀÇ¹ÌÇÕ´Ï´Ù. 
+-b build-wayland ì€ ë¹Œë“œë””ë ‰í† ë¦¬ ì´ë¦„ì´ë‹¤.
+ë¹Œë“œ ë””ë ‰í† ë¦¬ì•ˆì— conf í´ë”ì•ˆì— bblayers.conf ì™€ local.conf íŒŒì¼ì´ ìˆëŠ”ë° 
+/conf/bblayers.conf ëŠ” ë©”íƒ€ë ˆì´ì–´ë“¤ì´ í¬í•¨ëœë‹¤. 
+/conf/local.confëŠ” machine, distro ì„¤ì •ì´ í¬í•¨ëœë‹¤. ACCEPT_FSL_EULAë„ í¬í•¨ë˜ëŠ”ë°ëŠ” ì´ëŠ” EULAë¥¼ ìˆ˜ìš©í•¨ì„ ì˜ë¯¸í•©ë‹ˆë‹¤. 
 
-ÀÌ¹ÌÁö ·¹½ÃÇÇ·Î ÀüÃ¼ ÀÌ¹ÌÁö ºôµå 
+ì´ë¯¸ì§€ ë ˆì‹œí”¼ë¡œ ì „ì²´ ì´ë¯¸ì§€ ë¹Œë“œ 
 $ bitbake core-image-minimal or $ bitbake fsl-image-qt5-validation-imx
 
 <poky> core-image-minimal, core-image-base, core-image-sato, 
@@ -109,23 +110,23 @@ $ bitbake core-image-minimal or $ bitbake fsl-image-qt5-validation-imx
 <meta-fsl-bsp-release/imx/meta-sdk> fsl-image-validation-imx , fsl-image-qt5-validation-imx
 
 
-U-BOOT ºôµå
-local.conf ¿¡ UBOOT_CONFIG ¸¦ º¯°æÇÔÀ¸·Î U-BOOT Boot Å¸ÀÔÀ» ÁöÁ¤ÇÒ ¼ö ÀÖ´Ù. 
+U-BOOT ë¹Œë“œ
+local.conf ì— UBOOT_CONFIG ë¥¼ ë³€ê²½í•¨ìœ¼ë¡œ U-BOOT Boot íƒ€ì…ì„ ì§€ì •í•  ìˆ˜ ìˆë‹¤. 
 
 $ echo "UBOOT_CONFIG = \"emmc\"" >> conf/local.conf (U-boot EMMC)
 $ MACHINE= imx8qmmek  bitbake -c deploy u-boot-imx
 
-ºôµåÈ¯°æ Àç ½ÃÀÛ¹æ¹ı
+ë¹Œë“œí™˜ê²½ ì¬ ì‹œì‘ë°©ë²•
 source setup-environment build-wayland
 
 To integrate Chromium into your rootfs and enable hardware accelerated rendering of WebGL 
-Local.conf¿¡ ¾Æ·¡ ºÎºĞÀ» Ãß°¡Çß½À´Ï´Ù.
+Local.confì— ì•„ë˜ ë¶€ë¶„ì„ ì¶”ê°€í–ˆìŠµë‹ˆë‹¤.
 CORE_IMAGE_EXTRA_INSTALL += "chromium-ozone-wayland"
 
 
-Multilib Áö¿ø 
+Multilib ì§€ì› 
 
-Local.conf ÆÄÀÏ¿¡ ¾Æ·¡ ºÎºĞÀ» Àû¼ºÇÏ±â ¹Ù¶ø´Ï´Ù. 
+Local.conf íŒŒì¼ì— ì•„ë˜ ë¶€ë¶„ì„ ì ì„±í•˜ê¸° ë°”ëë‹ˆë‹¤. 
 
 MACHINE = imx8mqevk
 # Define multilib target
@@ -135,19 +136,20 @@ DEFAULTTUNE_virtclass-multilib-lib32 = "armv7athf-neon"
 # Add the multilib packages to the image
 IMAGE_INSTALL_append = "lib32-glibc lib32-libgcc lib32-libstdc++"
 
-Jailhouse ´Â local.conf¿¡ ¾Æ·¡ ºÎºĞÀ» Ãß°¡ÈÄ 
+Jailhouse ëŠ” local.confì— ì•„ë˜ ë¶€ë¶„ì„ ì¶”ê°€í›„ 
 DISTRO_FEATURES_append = " jailhouse"
 
 
 run `run jh_netboot` or `jh_mmcboot`.
-¸ğµâ ÀûÀç 
+ëª¨ë“ˆ ì ì¬ 
 #insmod jailhouse.ko
 #./jailhouse enable imx8mq.cell
 
 
-3. ÀÌ¹ÌÁö Àü°³
-<build directory>/tmp/deploy/images ¿¡ .sdcard, Ext3, tar.bz2 
-.sdcard Àº  u-boot, Ä¿³Î, ·çÆ®ÆÄÀÏ½Ã½ºÅÛÀÌ Æ÷ÇÔµÊ
+3. ì´ë¯¸ì§€ ì „ê°œ
+<build directory>/tmp/deploy/images ì— .sdcard, Ext3, tar.bz2 
+  
+.sdcard ì€  u-boot, ì»¤ë„, ë£¨íŠ¸íŒŒì¼ì‹œìŠ¤í…œì´ í¬í•¨ë¨
 
 
 $ bunzip2 -dk -f <image_name>.sdcard.bz2
@@ -155,16 +157,16 @@ $ sudo dd if=<image name>.sdcard of=/dev/sd<partition> bs=1M conv=fsync
 
 
 
-Package ¹× package group Ãß°¡ 
+Package ë° package group ì¶”ê°€ 
 
 CORE_IMAGE_EXTRA_INSTALL += "<package_name1 package_name2>"
 
 
-CORE_IMAGE_EXTRA_INSTALL += "ethtool¡±
+CORE_IMAGE_EXTRA_INSTALL += "ethtoolâ€
 
 IMAGE_INSTALL_append = " imx-test"
 IMAGE_INSTALL_append += " net-tools"
 
-IMAGE_INSTALL_append´Â CORE_IMAGE_EXTRA_INSTALL ¸ÅÅ©·Î¿¡ ³»¿ëÀ» Ãß°¡ÇÏ´Â ¸ÅÅ©·ÎÀÔ´Ï´Ù. 
+IMAGE_INSTALL_appendëŠ” CORE_IMAGE_EXTRA_INSTALL ë§¤í¬ë¡œì— ë‚´ìš©ì„ ì¶”ê°€í•˜ëŠ” ë§¤í¬ë¡œì…ë‹ˆë‹¤. 
 
 
